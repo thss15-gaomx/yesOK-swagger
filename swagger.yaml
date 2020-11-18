@@ -223,7 +223,44 @@ paths:
               $ref: '#/definitions/Event'
         400:
           description: Bad request
-          
+  /events/nearby:
+    get:
+      tags:
+      - events
+      summary: Get the list of nearby events
+      description: Get the list of the events near the user
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - name: latitude
+        in: formData
+        description: latitude
+        required: true
+        type: number
+        format: double
+      - name: longitude
+        in: formData
+        description: longitude
+        required: true
+        type: number
+        format: double
+      - name: radius
+        in: formData
+        description: radius
+        required: true
+        type: number
+        format: double
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Event'
+        400:
+          description: Bad request
   /user/info:
     get:
       tags:
